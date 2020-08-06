@@ -1,0 +1,121 @@
+<!-- <h1>Search Page</h1>
+<p>{{stock_name}}</p>
+<p>{{v1}}</p>
+<p>{{p}}%</p>
+<p>{{p_close}}</p>
+<p>{{p_close_v}}</p>
+<p>{{to}}</p>
+<p>{{to_v}}</p>
+<p>{{dr}}</p>
+<p>{{dr_v}}</p>
+<p>{{v}}</p>
+<p>{{v_v}}</p>
+<p>{{av}}</p>
+<p>{{av_v}}</p>
+<p>{{mc}}</p>
+<p>{{mc_v}}</p> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @media only screen and (max-width: 600px) {
+            body {
+                background-color: lightblue;
+            }
+}
+    </style>
+    <title>Stock Market-Live</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+</head>
+<body style="background-color: rgb(32, 117, 117);"> 
+    <nav class="navbar navbar-dark bg-dark"> 
+        <div class="d-flex flex-column">
+            <a class="navbar-brand"><h4 style="color: rgb(124, 12, 12);"><i>Stock Tracker-Live</i></h4></a>
+                <div class="p_2">
+                    <h6 style="color:rgb(13, 32, 117);">{{stock_name}}</h6>
+                </div>
+                <div class="p_2">
+                    <h6 style="color:rgb(13, 32, 117);">Date: {{date}}</h6>
+                </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="col-lg">
+                <h6 style="color:rgb(13, 32, 117);">Data : {{v1}}</h6>
+            </div>
+            <div class="col-lg">
+                <h6 style="color:rgb(13, 32, 117);">Change : {{p}}%</h6>
+            </div>
+        </div>
+      </nav>
+      <br><br>
+    <div class="container">
+        <div class="container">
+            <h3 style="color: rgb(124, 12, 12);">Today's Trading: </h3>
+            <br>
+            <br>
+            <!-- <div class="row"> -->
+                <div class="col-sm">
+                    <div class = "row"> 
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>{{p_close}}</strong></h4>
+                            <p>{{p_close_v}}</p>
+                        </div>
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>{{to}}</strong></h4>
+                            <p>{{to_v}}</p>
+                            </div>
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>{{dr}}</strong></h4>
+                            <p>{{dr_v}}</p>
+                        </div>
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>{{v}}</strong></h4>
+                            <p>{{v_v}}</p>
+                        </div>
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>{{av}}</strong></h4>
+                            <p>{{av_v}}</p>
+                        </div>
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>{{mc}}</strong></h4>
+                            <p>{{mc_v}}</p>
+                        </div>
+                </div>
+                <div>
+                    {{graph|safe}}
+                </div>
+                <!-- </div> -->
+                
+                </div>
+            </div>
+            </div>
+            <br><br>
+    </div>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer>
+        <div class="text-center">
+            <p class="bg-light"> Developed by <a href="https://swatimani16.github.io/reactportfolio/">Swati Mani</a> .</p>
+        </div>
+        
+    </footer>
+
+    <!-- <script type="text/javascript">
+        setTimeout(function () { 
+          location.reload();
+        }, 60 * 1000);
+    </script> -->
+    <script>
+        window.setTimeout(function () {
+        location.href = "http://127.0.0.1:8000/";
+        }, 60000);
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

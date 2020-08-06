@@ -1,0 +1,287 @@
+<!-- <h2>{{headline}}</h2>
+<h2>{{url}}</h2>
+<h2>{{data_day}}</h2>
+<h2>{{date}}</h2>
+<h2>{{data_time}}</h2>
+<h2>{{dow}}</h2>
+<h2>{{dow_1}}</h2>
+<h2>{{dow_2}}</h2>
+<h2>{{dow_3}}</h2>
+<h2>{{nas}}</h2>
+<h2>{{nas_1}}</h2>
+<h2>{{nas_2}}</h2>
+<h2>{{nas_3}}</h2>
+<h2>{{snp}}</h2>
+<h2>{{snp_1}}</h2>
+<h2>{{snp_2}}</h2>
+<h2>{{snp_3}}</h2>
+<p>Most Active: {{most_active}}<p>
+<p>Gainers: {{gainers}}<p>
+<p>Losers: {{losers}}<p> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @media only screen and (max-width: 600px) {
+            body {
+                background-color: lightblue;
+            }
+}
+    </style>
+    <title>Stock Market-Live</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+</head>
+<body style="background-color: rgb(32, 117, 117);"> 
+    <nav class="navbar navbar-dark bg-dark"> 
+        <div class="d-flex flex-column">
+            <a class="navbar-brand"><h4 style="color: rgb(124, 12, 12);"><i>Stock Tracker-Live</i></h4></a>
+                <div class="p_2">
+                    <h6 style="color:rgb(13, 32, 117);">{{data_day}}</h6>
+                </div>
+                <div class="p_2">
+                    <h6 style="color:rgb(13, 32, 117);">Date: {{date}}</h6>
+                </div>
+                <div class="p_2">
+                    <h6 style="color:rgb(13, 32, 117);">Data as of Time: {{data_time}}</h6>
+                </div>
+        </div>
+        <div class="d-flex flex-row">
+            <div class="d-flex flex-column">
+                <div class="p_2" style="color: rgb(124, 12, 12);"><p>{{dow}}</p></div>
+                <div class="p_2">
+                    {% if "-" in dow_1 %}
+                        <p style="color: rgb(145, 66, 66);">{{dow_1}}</p>
+                    {% else %}
+                    <p style="color: rgba(25, 90, 25, 0.788)">{{dow_1}}</p>
+                    {% endif %}
+                </div>
+                <div class="p_2">
+                    <p>{{dow_2}}</p>
+                </div>
+                <div class="p_2">
+                    {% if "-" in dow_3 %}
+                        <p style="color: rgb(145, 66, 66);">{{dow_3}}</p>
+                    {% else %}
+                    <p style="color: rgba(25, 90, 25, 0.788)">{{dow_3}}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row">
+            <div class="d-flex flex-column">
+                <div class="p_2" style="color: rgb(124, 12, 12);"><p>{{nas}}</p></div>
+                <div class="p_2">
+                    {% if "-" in nas_1 %}
+                        <p style="color: rgb(145, 66, 66);">{{nas_1}}</p>
+                    {% else %}
+                        <p style="color: rgba(25, 90, 25, 0.788)">{{nas_1}}</p>
+                    {% endif %}
+                </p></div>
+                <div class="p_2"><p>{{nas_2}}</p></div>
+                <div class="p_2">
+                    {% if "-" in nas_3 %}
+                        <p style="color: rgb(145, 66, 66);">{{nas_3}}</p>
+                    {% else %}
+                        <p style="color: rgba(25, 90, 25, 0.788)">{{nas_3}}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row">
+            <div class="d-flex flex-column">
+                <div class="p_2" style="color: rgb(124, 12, 12);"><p>{{snp}}</p></div>
+                <div class="p_2">
+                    {% if "-" in snp_1 %}
+                        <p style="color: rgb(145, 66, 66);">{{snp_1}}</p>
+                    {% else %}
+                    <p style="color: rgba(25, 90, 25, 0.788);">{{snp_1}}</p>
+                    {% endif %}
+                </div>
+                <div class="p_2"><p>{{snp_2}}</p></div>
+                <div class="p_2">
+                    {% if "-" in snp_3 %}
+                        <p style="color: rgb(145, 66, 66);">{{snp_3}}</p>
+                    {% else %}
+                    <p style="color: rgba(25, 90, 25, 0.788)">{{snp_3}}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        </div>
+        <form class="form-inline" action="{% url 'search'%}" method="get">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search Stock" aria-label="Search" name = "search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <!-- <div class="d-flex align-items-end flex-column"><div class="p_2">**NOTE: Please refresh page every minute!</div></div> -->
+      </nav>
+      <br><br>
+    <div class="container">
+        <div class="container">
+            <h3 style="color: rgb(124, 12, 12);">Today's HeadLines: </h3>
+            <h5><a style="color: rgba(34, 5, 5, 0.959);" href="https://www.cnn.com{{url}}">{{headline}}</a></h5>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-sm">
+                    <h4 style="color:rgb(47, 7, 88);"><strong>Most Active</strong></h4>
+                    <div class = "row"> 
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>Stock</strong></h4>
+                            {% for s in most_active %}
+                                {% if "-" in s %}
+                                    <p style="color:rgb(13, 32, 117);">{{s}}</p>
+                                {% else %}
+                                <p style="color:rgb(13, 32, 117);">{{s}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>Price</strong></h4>
+                            {% for p in ma_price %}
+                                {% if "-" in p %}
+                                    <p style="color: rgb(145, 66, 66);">{{p}}</p>
+                                {% else %}
+                                    <p style="color: rgba(25, 90, 25, 0.788)">{{p}}</p>
+                                {% endif %}
+                            {% endfor %}
+                            </div>
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>Change</strong></h4>
+                            {% for c in ma_change %}
+                                {% if "-" in c %}
+                                    <p style="color: rgb(145, 66, 66);">{{c}}</p>
+                                {% else %}
+                                    <p style="color: rgba(25, 90, 25, 0.788)">{{c}}</p>
+                                 {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>C%</strong></h4>
+                            {% for cp in ma_cper %}
+                                {% if "-" in cp %}
+                                        <p style="color: rgb(145, 66, 66);">{{cp}}</p>
+                                {% else %}
+                                        <p style="color: rgba(25, 90, 25, 0.788)">{{cp}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                </div>
+                </div>
+                <div class="col-sm">
+                    <h4 style="color:rgb(47, 7, 88);"><strong>Gainers</strong></h4>
+                    <div class = "row"> 
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>Stock</strong></h4>
+                            {% for s in gainers %}
+                                {% if "-" in s %}
+                                    <p style="color:rgb(13, 32, 117);">{{s}}</p>
+                                {% else %}
+                                    <p style="color:rgb(13, 32, 117);">{{s}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>Price</strong></h4>
+                            {% for p in g_price %}
+                                {% if "-" in p %}
+                                    <p style="color: rgb(145, 66, 66);">{{p}}</p>
+                                {% else %}
+                                    <p style="color: rgba(25, 90, 25, 0.788)">{{p}}</p>
+                                {% endif %}
+                            {% endfor %}
+                            </div>
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>Change</strong></h4>
+                            {% for c in g_change %}
+                                {% if "-" in c %}
+                                    <p style="color: rgb(145, 66, 66);">{{c}}</p>
+                                {% else %}
+                                    <p style="color: rgba(25, 90, 25, 0.788)">{{c}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>C%</strong></h4>
+                            {% for cp in g_cper %}
+                                {% if "-" in cp %}
+                                        <p style="color: rgb(145, 66, 66);">{{cp}}</p>
+                                {% else %}
+                                        <p style="color: rgba(25, 90, 25, 0.788)">{{cp}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                </div>
+                </div>
+                <br>
+                <div class="col-sm">
+                    <h4 style="color:rgb(47, 7, 88);"><strong>Losers</strong></h4>
+                    <div class = "row"> 
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>Stock</strong></h4>
+                            {% for s in losers %}
+                                {% if "-" in s %}
+                                    <p style="color:rgb(13, 32, 117);">{{s}}</p>
+                                {% else %}
+                                    <p style="color:rgb(13, 32, 117);">{{s}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>Price</strong></h4>
+                            {% for p in l_price %}
+                                {% if "-" in p %}
+                                    <p style="color: rgb(145, 66, 66);">{{p}}</p>
+                                {% else %}
+                                    <p style="color: rgba(25, 90, 25, 0.788)">{{p}}</p>
+                                {% endif %}
+                            {% endfor %}
+                            </div>
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>Change</strong></h4>
+                            {% for c in l_change %}
+                                {% if "-" in c %}
+                                    <p style="color: rgb(145, 66, 66);">{{c}}</p>
+                                {% else %}
+                                    <p style="color: rgba(25, 90, 25, 0.788)">{{c}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="col-sm">
+                            <h4 style="color:rgb(148, 21, 21);"><strong>C%</strong></h4>
+                            {% for cp in l_cper %}
+                                {% if "-" in cp %}
+                                        <p style="color: rgb(145, 66, 66);">{{cp}}</p>
+                                {% else %}
+                                        <p style="color: rgba(25, 90, 25, 0.788)">{{cp}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <br><br>
+    </div>
+    
+    <br>
+    <footer>
+        <div class="text-center">
+            <p class="bg-light"> Developed by <a href="https://swatimani16.github.io/reactportfolio/">Swati Mani</a> .</p>
+        </div>
+        
+    </footer>
+
+   <script>
+        window.setTimeout(function () {
+        location.href = "http://127.0.0.1:8000/";
+        }, 60000);
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
